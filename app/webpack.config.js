@@ -1,5 +1,5 @@
 module.exports = {
-    entry: "./src/entry-point/entry.tsx",
+    entry: "./src/entry-point/index.tsx",
     output: {
         filename: "bundle.js",
         path: __dirname + "/dist"
@@ -16,7 +16,9 @@ module.exports = {
     module: {
         loaders: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            { test: /\.tsx?$/, loader: "awesome-typescript-loader" }
+            { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+            { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader']},
+            { test: /\.(png|jpg|woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=100000' }
         ],
 
         preLoaders: [
